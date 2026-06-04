@@ -38,7 +38,7 @@ import pageindex.utils as utils
 PDF_URL = "https://arxiv.org/pdf/2603.15031"
 
 _EXAMPLES_DIR = Path(__file__).parent
-PDF_PATH = _EXAMPLES_DIR / "documents" / "attention-residuals.pdf"
+PDF_PATH = _EXAMPLES_DIR / "documents" / "earthmover.pdf"
 WORKSPACE = _EXAMPLES_DIR / "workspace"
 
 AGENT_SYSTEM_PROMPT = """
@@ -183,6 +183,6 @@ if __name__ == "__main__":
     print("\n" + "=" * 60)
     print("Step 3: Agent Query (auto tool-use)")
     print("=" * 60)
-    question = "Explain Attention Residuals in simple language."
+    question ="Summarize the main ideas of this document."
     print(f"\nQuestion: '{question}'")
     query_agent(client, doc_id, question, verbose=True)
