@@ -1,0 +1,156 @@
+{
+  "doc_name": "earthmover",
+  "line_count": 422,
+  "structure": [
+    {
+      "title": "Earth Mover's Distance based Similarity Search at Scale",
+      "node_id": "0001",
+      "line_start": 1,
+      "line_end": 16
+    },
+    {
+      "title": "ABSTRACT",
+      "node_id": "0002",
+      "line_start": 17,
+      "line_end": 20
+    },
+    {
+      "title": "1. INTRODUCTION",
+      "node_id": "0003",
+      "line_start": 21,
+      "line_end": 36
+    },
+    {
+      "title": "2. PRELIMINARIES",
+      "node_id": "0004",
+      "line_start": 37,
+      "line_end": 69
+    },
+    {
+      "title": "2.1 Computing the EMD",
+      "node_id": "0005",
+      "line_start": 70,
+      "line_end": 94
+    },
+    {
+      "title": "2.2 Filter-and-Refinement Framework",
+      "node_id": "0006",
+      "line_start": 95,
+      "line_end": 102
+    },
+    {
+      "title": "Algorithm 1 FILTER-AND-REFINEMENT FOR k -NN",
+      "node_id": "0007",
+      "line_start": 103,
+      "line_end": 110
+    },
+    {
+      "title": "3. SCALING UP SSP",
+      "node_id": "0008",
+      "line_start": 111,
+      "line_end": 120
+    },
+    {
+      "title": "Algorithm 2 SIA BASED EMD CALCULATION",
+      "node_id": "0009",
+      "line_start": 121,
+      "line_end": 140
+    },
+    {
+      "title": "4. BOOSTING THE REFINEMENT PHASE",
+      "node_id": "0010",
+      "line_start": 141,
+      "line_end": 144
+    },
+    {
+      "title": "4.1 Analysis of EMD Calculation",
+      "node_id": "0011",
+      "line_start": 145,
+      "line_end": 154
+    },
+    {
+      "title": "4.2 Progressive Bounding",
+      "node_id": "0012",
+      "line_start": 155,
+      "line_end": 209
+    },
+    {
+      "title": "4.3 Sensitivity to Refinement Order",
+      "node_id": "0013",
+      "line_start": 210,
+      "line_end": 219
+    },
+    {
+      "title": "4.4 Dynamic Refinement Ordering",
+      "node_id": "0014",
+      "line_start": 220,
+      "line_end": 227
+    },
+    {
+      "title": "Algorithm 3 DYNAMIC REFINEMENT ORDERING",
+      "node_id": "0015",
+      "line_start": 228,
+      "line_end": 247
+    },
+    {
+      "title": "4.5 Running Upper Bound",
+      "node_id": "0016",
+      "line_start": 248,
+      "line_end": 261
+    },
+    {
+      "title": "Algorithm 4 GREEDY UPPER BOUND",
+      "node_id": "0017",
+      "line_start": 262,
+      "line_end": 271
+    },
+    {
+      "title": "5. EXPERIMENTAL EVALUATION",
+      "node_id": "0018",
+      "line_start": 272,
+      "line_end": 290
+    },
+    {
+      "title": "5.1 Performance Improvement",
+      "node_id": "0019",
+      "line_start": 291,
+      "line_end": 342
+    },
+    {
+      "title": "5.2 Scalability Experiments",
+      "node_id": "0020",
+      "line_start": 343,
+      "line_end": 352
+    },
+    {
+      "title": "5.3 Parameter Tuning in DRO",
+      "node_id": "0021",
+      "line_start": 353,
+      "line_end": 366
+    },
+    {
+      "title": "6. RELATED WORK",
+      "node_id": "0022",
+      "line_start": 367,
+      "line_end": 376
+    },
+    {
+      "title": "7. CONCLUSION",
+      "node_id": "0023",
+      "line_start": 377,
+      "line_end": 384
+    },
+    {
+      "title": "8. ACKNOWLEDGMENT",
+      "node_id": "0024",
+      "line_start": 385,
+      "line_end": 388
+    },
+    {
+      "title": "9. REFERENCES",
+      "node_id": "0025",
+      "line_start": 389,
+      "line_end": 422
+    }
+  ]
+}

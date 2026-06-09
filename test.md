@@ -1,9 +1,9 @@
-# Test
+# AI
 
-## Cars
+## RAG
 
-Cars need repairs.
+RAG stands for Retrieval Augmented Generation.
 
-## Maintenance
+## Vectorless RAG
 
-Oil changes are important.
+Vectorless RAG does not use embeddings.

@@ -576,14 +576,30 @@ def add_node_text_with_labels(node, pdf_pages):
 
 
 async def generate_node_summary(node, model=None):
-    prompt = f"""You are given a part of a document, your task is to generate a description of the partial document about what are main points covered in the partial document.
+    prompt = f"""
+Generate a semantic retrieval summary for the following document section.
 
-    Partial Document Text: {node['text']}
-    
-    Directly return the description, do not include any other text.
-    """
-    response = await llm_acompletion(model, prompt)
-    return response
+Section title:
+{node["title"]}
+
+Section content:
+{node["text"]}
+
+Requirements:
+- Maximum 60 words.
+- Preserve technical terms.
+- Mention algorithms, datasets, formulas, or important ideas.
+- Make the summary useful for semantic retrieval by another AI.
+- Do not use introductory phrases such as:
+  "This section..."
+  "The document..."
+  "The partial document..."
+- Return only the summary.
+Ignore Markdown syntax (#, ##, ###), code fences, and formatting.
+Return only a natural-language semantic summary.
+"""
+
+    return await llm_acompletion(model, prompt)
 
 
 async def generate_summaries_for_structure(structure, model=None):

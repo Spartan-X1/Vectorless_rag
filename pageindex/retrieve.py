@@ -54,25 +54,33 @@ def _get_pdf_page_content(doc_info: dict, page_nums: list[int]) -> list[dict]:
 
 
 def _get_md_page_content(doc_info: dict, page_nums: list[int]) -> list[dict]:
-    """
-    For Markdown documents, 'pages' are line numbers.
-    Find nodes whose line_num falls within [min(page_nums), max(page_nums)] and return their text.
-    """
-    min_line, max_line = min(page_nums), max(page_nums)
+
     results = []
-    seen = set()
+
+    # Read markdown once
+    with open(doc_info["path"], "r", encoding="utf-8") as f:
+        lines = f.readlines()
 
     def _traverse(nodes):
         for node in nodes:
-            ln = node.get('line_num')
-            if ln and min_line <= ln <= max_line and ln not in seen:
-                seen.add(ln)
-                results.append({'page': ln, 'content': node.get('text', '')})
-            if node.get('nodes'):
-                _traverse(node['nodes'])
 
-    _traverse(doc_info.get('structure', []))
-    results.sort(key=lambda x: x['page'])
+            start = node.get("line_start")
+            end = node.get("line_end")
+
+            # Match by node start line
+            if start in page_nums:
+
+                results.append({
+                    "page": start,
+                    "content": "".join(lines[start - 1:end])
+                })
+
+            _traverse(node.get("nodes", []))
+
+    _traverse(doc_info.get("structure", []))
+
+    results.sort(key=lambda x: x["page"])
+
     return results
 
 
@@ -109,13 +117,23 @@ def get_document_structure(documents: dict, doc_id: str) -> str:
 
 def get_page_content(documents: dict, doc_id: str, pages: str) -> str:
     """
-    Retrieve page content for a document.
+    Retrieve content for a document.
 
-    pages format: '5-7', '3,8', or '12'
-    For PDF: pages are physical page numbers (1-indexed).
-    For Markdown: pages are line numbers corresponding to node headers.
+    For PDF:
+        pages are physical page numbers (1-indexed).
 
-    Returns JSON list of {'page': int, 'content': str}.
+    For Markdown:
+        pages correspond to node start line numbers.
+        The function returns the entire node content
+        from line_start to line_end.
+
+    Examples:
+        PDF:
+            "5-7" -> pages 5 through 7
+
+        Markdown:
+            "155" -> node beginning at line 155
+            (returns lines 155 through line_end)
     """
     doc_info = documents.get(doc_id)
     if not doc_info:
